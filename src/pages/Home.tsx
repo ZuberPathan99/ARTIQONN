@@ -1,10 +1,4 @@
-import {
-  ArrowDown,
-  ArrowUpRight,
-  Code2,
-  Fingerprint,
-  Aperture,
-} from 'lucide-react';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router';
 import { Button } from '@/components/ui/button';
 import { SectionLabel, TextLink } from '@/components/common/Editorial';
@@ -12,6 +6,7 @@ import { Reveal } from '@/components/motion/Reveal';
 import { ProjectCard } from '@/features/portfolio/ProjectCard';
 import { projects } from '@/data/projects';
 import { serviceGroups } from '@/data/services';
+import { ServiceCatalogue } from '@/features/services/ServiceCatalogue';
 import { pageMeta } from '@/lib/seo';
 
 export const meta = () =>
@@ -20,30 +15,6 @@ export const meta = () =>
     'ARTIQONN is a technology and design company creating thoughtful software, distinctive identities, and considered digital experiences.',
     '/',
   );
-
-const capabilities = [
-  {
-    icon: Code2,
-    title: 'Technology & development',
-    description:
-      'From the first line of code to the final interaction. Software and websites built with purpose.',
-    tags: ['Software development', 'Web experiences', 'E-commerce'],
-  },
-  {
-    icon: Fingerprint,
-    title: 'Branding & design',
-    description:
-      'A clear idea. A distinctive identity. Design that connects who you are with how people experience you.',
-    tags: ['Brand identities', 'UI/UX design', 'Visual systems'],
-  },
-  {
-    icon: Aperture,
-    title: 'Creative production',
-    description:
-      'Art direction and considered visual storytelling that bring a different perspective to your brand.',
-    tags: ['Commercial films', 'Advertising creatives', 'Visual campaigns'],
-  },
-];
 
 export default function Home() {
   return (
@@ -158,28 +129,7 @@ export default function Home() {
             </p>
           </div>
         </Reveal>
-        <div className="capability-list">
-          {capabilities.map((item, index) => (
-            <Link
-              key={item.title}
-              to={`/services#${index + 1}`}
-              className="capability-row"
-            >
-              <span className="capability-number">0{index + 1}</span>
-              <item.icon
-                className="capability-icon"
-                size={28}
-                strokeWidth={1.25}
-              />
-              <h3>{item.title}</h3>
-              <div className="capability-description">
-                <p>{item.description}</p>
-                <span>{item.tags.join(' / ')}</span>
-              </div>
-              <ArrowUpRight className="capability-arrow" strokeWidth={1.25} />
-            </Link>
-          ))}
-        </div>
+        <ServiceCatalogue />
       </section>
       <section className="work-section" aria-labelledby="work-heading">
         <div className="container">

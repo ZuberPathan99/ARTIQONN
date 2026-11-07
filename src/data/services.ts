@@ -3,222 +3,188 @@ import type { Service, ServiceGroup } from '@/types/content';
 export const serviceGroups: {
   title: ServiceGroup;
   number: string;
+  image: string;
+  imageAlt: string;
   introduction: string;
 }[] = [
   {
-    title: 'Technology & development',
+    title: 'Development',
     number: '01',
+    image: '/images/projects/stockroom/cover',
+    imageAlt:
+      'A practical order-management interface shown on a desktop workstation, an original software concept',
     introduction:
-      'Thoughtful engineering. Built around the way your business works.',
+      'Websites, online stores, and software shaped around the way your business works.',
   },
   {
-    title: 'Branding & design',
+    title: 'Branding & Design',
     number: '02',
+    image: '/images/projects/mason-and-reed/cover',
+    imageAlt:
+      'Mason and Reed concept identity applied to printed furniture catalogues and stationery',
     introduction:
-      'Distinctive identities and intuitive experiences, down to the smallest detail.',
+      'A clear identity, a recognisable mark, and a direction that connects every touchpoint.',
   },
   {
-    title: 'Creative production',
+    title: 'Creative Production',
     number: '03',
+    image: '/images/projects/cornerstone-coffee/cover',
+    imageAlt:
+      'Cornerstone Coffee packaging and product advertising concept photographed on a café counter',
     introduction:
-      'Ideas brought into focus. Visual stories made for the right moment.',
+      'Product visuals, films, and social content with a clear idea behind every frame.',
   },
 ];
 
 export const services: Service[] = [
   {
-    slug: 'custom-software-development',
-    title: 'Custom software development',
-    group: 'Technology & development',
-    description:
-      'Purpose-built software that brings clarity to complex workflows and supports the way you operate.',
-    deliverables: [
-      'Requirements and technical discovery',
-      'Application architecture',
-      'Custom application development',
-      'Testing and handover documentation',
-    ],
-    problem:
-      'Off-the-shelf tools can leave gaps between how a team works and what its software allows. We begin with those gaps and define a practical, maintainable solution.',
-  },
-  {
-    slug: 'web-application-development',
-    title: 'Web application development',
-    group: 'Technology & development',
-    description:
-      'Responsive, accessible web applications with carefully considered interfaces and dependable foundations.',
-    deliverables: [
-      'User flows and interface design',
-      'Responsive frontend development',
-      'API integration',
-      'Quality assurance and deployment planning',
-    ],
-    problem:
-      'Complex tasks deserve interfaces that feel simple. We map the essential journeys before choosing the technology that supports them.',
-  },
-  {
     slug: 'website-design-development',
-    title: 'Website design & development',
-    group: 'Technology & development',
+    title: 'Website Design & Development',
+    group: 'Development',
     description:
-      'Fast, distinctive websites that express your identity and make every visit feel considered.',
+      'Distinctive, responsive websites that connect a clear brand story with a fast, accessible experience.',
     deliverables: [
-      'Content structure and wireframes',
-      'Original visual design',
-      'Responsive website development',
-      'Technical SEO and performance checks',
+      'Content structure and page planning',
+      'Original interface and responsive design',
+      'Website development and integration',
+      'Accessibility, performance, and launch checks',
     ],
     problem:
-      'A website should make your business easy to understand. We connect content, design, and engineering to create a clear path from first impression to inquiry.',
-  },
-  {
-    slug: 'business-software-erp',
-    title: 'Business software & ERP solutions',
-    group: 'Technology & development',
-    description:
-      'Connected business tools designed to make day-to-day operations easier to understand and manage.',
-    deliverables: [
-      'Workflow and requirements mapping',
-      'Module and permission planning',
-      'Custom business interfaces',
-      'Integration and migration planning',
-    ],
-    problem:
-      'Disconnected spreadsheets and repetitive tasks create friction. We work with your team to understand the process before designing the system.',
+      'A website needs to explain your business clearly and make the next step easy. We bring content, design, and development together around that journey.',
   },
   {
     slug: 'ecommerce-development',
-    title: 'E-commerce development',
-    group: 'Technology & development',
+    title: 'E-commerce Development',
+    group: 'Development',
     description:
-      'Considered shopping experiences that balance product storytelling with a straightforward path to purchase.',
+      'Considered online stores that bring product storytelling, intuitive browsing, and purchasing into one experience.',
     deliverables: [
-      'Store experience design',
-      'Product and collection templates',
-      'Commerce platform integration',
+      'Store structure and shopping journeys',
+      'Product and collection page design',
+      'Commerce platform and payment integration',
       'Checkout and responsive testing',
     ],
     problem:
-      'The best product story still needs a usable store. We bring product presentation, navigation, and purchasing journeys into one coherent experience.',
+      'An online store needs to balance the product story with practical shopping decisions. We shape the browsing and purchase journey around the catalogue and the people using it.',
+  },
+  {
+    slug: 'custom-software-development',
+    title: 'Custom Software Development',
+    group: 'Development',
+    description:
+      'Purpose-built software designed around your business processes, everyday tasks, and practical requirements.',
+    deliverables: [
+      'Requirements and workflow discovery',
+      'Application architecture and interface planning',
+      'Custom development and integrations',
+      'Testing and handover documentation',
+    ],
+    problem:
+      'Disconnected tools and manual work can make straightforward tasks complicated. We start with the process and define a maintainable solution around the way your team operates.',
+  },
+  {
+    slug: 'support-maintenance',
+    title: 'Support & Maintenance',
+    group: 'Development',
+    description:
+      'Ongoing care for websites and software, with agreed support scope, updates, and technical improvements.',
+    deliverables: [
+      'Technical review and support planning',
+      'Dependency and compatibility updates',
+      'Issue investigation and bug fixes',
+      'Agreed content, performance, and usability improvements',
+    ],
+    problem:
+      'Digital products need attention after launch. We review the existing setup and agree on a realistic maintenance scope, priorities, and working arrangements.',
+  },
+  {
+    slug: 'logo-design',
+    title: 'Logo Design',
+    group: 'Branding & Design',
+    description:
+      'Distinctive wordmarks and symbols that give your business a clear and recognisable visual signature.',
+    deliverables: [
+      'Visual discovery and concept directions',
+      'Wordmark and symbol exploration',
+      'Refinement and format variations',
+      'Production-ready logo files and usage guidance',
+    ],
+    problem:
+      'A logo has to work across different sizes, materials, and contexts. We develop a clear visual idea and refine it into a practical, flexible mark.',
   },
   {
     slug: 'brand-identity-design',
-    title: 'Brand identity design',
-    group: 'Branding & design',
+    title: 'Brand Identity Design',
+    group: 'Branding & Design',
     description:
-      'Visual identities with a clear point of view and the flexibility to work wherever your brand appears.',
+      'Connected visual identities that bring your logo, typography, colour, and applications into one coherent system.',
     deliverables: [
-      'Visual direction exploration',
-      'Logo and identity system',
-      'Typography and colour system',
-      'Brand application guidelines',
+      'Visual direction and identity concepts',
+      'Logo, typography, and colour system',
+      'Core brand application designs',
+      'Brand guidelines and asset handover',
     ],
     problem:
-      'An inconsistent identity makes a business harder to recognise. We establish a visual foundation that keeps every touchpoint connected.',
+      'Inconsistent touchpoints make a brand harder to recognise. We create a shared visual foundation that keeps everyday communication connected.',
   },
   {
-    slug: 'visual-design',
-    title: 'Visual design',
-    group: 'Branding & design',
+    slug: 'brand-strategy-positioning',
+    title: 'Brand Strategy & Positioning',
+    group: 'Branding & Design',
     description:
-      'Precise compositions, expressive typography, and purposeful visual systems for digital and print.',
+      'A clear direction for how your brand expresses its purpose, connects with its audience, and finds its place.',
     deliverables: [
-      'Art direction',
-      'Layout and typography systems',
-      'Campaign design assets',
-      'Production-ready artwork',
+      'Brand and audience discovery',
+      'Market and competitor context review',
+      'Positioning and messaging direction',
+      'Brand personality and communication principles',
     ],
     problem:
-      'Good communication needs hierarchy and restraint. We organise the message and make its visual expression clear and distinctive.',
+      'A visual identity needs a clear idea behind it. We work with you to understand the audience, the business, and the perspective that should guide your communication.',
   },
   {
-    slug: 'ui-ux-design',
-    title: 'UI/UX design',
-    group: 'Branding & design',
+    slug: 'product-advertising-visuals',
+    title: 'Product Advertising & Visuals',
+    group: 'Creative Production',
     description:
-      'Digital experiences shaped around real tasks, clear interactions, and the people who use them.',
+      'Product-focused imagery and advertising concepts shaped by deliberate art direction and a clear message.',
     deliverables: [
-      'Journey and task mapping',
-      'Wireframes and interactive prototypes',
-      'Interface design system',
-      'Developer handoff',
+      'Product concept and art direction',
+      'Advertising compositions and visual treatments',
+      'Campaign format adaptations',
+      'Production-ready visual assets',
     ],
     problem:
-      'Friction often starts with unclear choices. We examine the user journey and turn complicated requirements into understandable interactions.',
+      'Product advertising needs to focus attention on the right detail. We shape the visual idea around the product, the audience, and the intended placement.',
   },
   {
-    slug: 'digital-brand-assets',
-    title: 'Digital brand assets',
-    group: 'Branding & design',
+    slug: 'short-form-video-social-media-creatives',
+    title: 'Short-Form Video & Social Media Creatives',
+    group: 'Creative Production',
     description:
-      'A consistent family of digital assets that carries your identity across everyday brand touchpoints.',
+      'Short videos and social assets designed to carry a consistent brand idea across everyday digital channels.',
     deliverables: [
-      'Social media templates',
-      'Presentation design elements',
-      'Digital marketing assets',
-      'Reusable asset guidelines',
-    ],
-    problem:
-      'Daily communication should feel like it comes from the same company. We create usable assets that help teams keep their brand consistent.',
-  },
-  {
-    slug: 'ai-assisted-commercial-films',
-    title: 'AI-assisted commercial films',
-    group: 'Creative production',
-    description:
-      'Commercial film concepts combining human art direction with carefully selected AI-assisted production tools.',
-    deliverables: [
-      'Concept and script development',
+      'Content concepts and short-form scripts',
       'Storyboards and visual direction',
-      'AI-assisted visual production',
-      'Editing and delivery formats',
+      'Video editing and social creative assets',
+      'Platform-specific formats and delivery files',
     ],
     problem:
-      'A compelling film starts with an idea. We establish the story, scope, and production constraints before deciding where AI tools can contribute.',
+      'Social content needs to communicate quickly while still feeling like your brand. We develop a connected direction and adapt it to the required platforms and formats.',
   },
   {
-    slug: 'product-advertising-creatives',
-    title: 'Product advertising creatives',
-    group: 'Creative production',
+    slug: 'commercial-video-production',
+    title: 'Commercial Video Production',
+    group: 'Creative Production',
     description:
-      'Product-focused visuals with considered art direction and a clear communication objective.',
+      'Commercial film concepts and production shaped around a clear story, considered visuals, and the right delivery format.',
     deliverables: [
-      'Product visual direction',
-      'Advertising compositions',
-      'Platform-specific adaptations',
-      'Final production assets',
+      'Concept, script, and production planning',
+      'Storyboards and art direction',
+      'Video production and editing',
+      'Sound, colour, and final format delivery',
     ],
     problem:
-      'Product advertising needs to communicate the right detail quickly. We shape the composition around the product and its intended audience.',
-  },
-  {
-    slug: 'social-media-advertising',
-    title: 'Social media advertising creatives',
-    group: 'Creative production',
-    description:
-      'Platform-aware creative assets that express your brand clearly in busy social environments.',
-    deliverables: [
-      'Creative concepts',
-      'Static and motion asset planning',
-      'Format and aspect-ratio adaptations',
-      'Reusable campaign templates',
-    ],
-    problem:
-      'A social campaign needs a coherent idea across different formats. We design a connected set of assets around the message and the platform.',
-  },
-  {
-    slug: 'creative-visual-campaigns',
-    title: 'Creative visual campaigns',
-    group: 'Creative production',
-    description:
-      'Connected visual concepts that bring a single, distinctive idea to life across a campaign.',
-    deliverables: [
-      'Campaign concept and visual narrative',
-      'Key visual development',
-      'Cross-channel artwork',
-      'Campaign asset guidelines',
-    ],
-    problem:
-      'Scattered campaign assets can dilute an idea. We establish a central visual direction and translate it consistently across the required touchpoints.',
+      'A commercial film needs a purposeful story and an achievable production plan. We agree on the message, approach, and scope before moving into production.',
   },
 ];

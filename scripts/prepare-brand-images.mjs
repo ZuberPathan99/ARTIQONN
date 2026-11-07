@@ -6,10 +6,16 @@ const [brand, asset, input] = process.argv.slice(2);
 const allowed = {
   nomara: ['cover', 'campaign', 'mobile'],
   'alder-and-form': ['cover', 'interior', 'craft'],
+  'northbound-travel': ['cover', 'product', 'mobile'],
+  'mason-and-reed': ['cover', 'showroom', 'details'],
+  'fieldwork-supply': ['cover'],
+  'bracken-studio': ['cover'],
+  stockroom: ['cover'],
+  'cornerstone-coffee': ['cover'],
 };
 if (!allowed[brand]?.includes(asset) || !input)
   throw new Error(
-    'Usage: node scripts/prepare-brand-images.mjs <nomara|alder-and-form> <asset> <source-image-path>',
+    'Usage: node scripts/prepare-brand-images.mjs <project-slug> <asset> <source-image-path>',
   );
 const directory = resolve('public/images/projects', brand);
 await mkdir(directory, { recursive: true });

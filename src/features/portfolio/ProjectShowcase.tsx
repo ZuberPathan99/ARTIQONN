@@ -26,7 +26,7 @@ export function ProjectIdentity({ project }: { project: Project }) {
             className="identity-logo-panel"
             style={{
               backgroundColor: identity.palette.find((colour) =>
-                ['Parchment', 'Ecru'].includes(colour.name),
+                ['Parchment', 'Ecru', 'Paper'].includes(colour.name),
               )?.hex,
             }}
           >

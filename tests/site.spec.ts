@@ -11,9 +11,9 @@ test('public pages pass automated WCAG 2.2 AA accessibility checks', async ({
     '/about',
     '/contact',
     '/services/website-design-development',
-    '/work/still-objects',
-    '/work/nomara',
-    '/work/alder-and-form',
+    '/work/fieldwork-supply',
+    '/work/northbound-travel',
+    '/work/mason-and-reed',
   ]) {
     await page.goto(path);
     const results = await new AxeBuilder({ page })
@@ -43,9 +43,9 @@ test('all page types have meaningful headings and route-specific titles', async 
     '/services',
     '/services/website-design-development',
     '/work',
-    '/work/still-objects',
-    '/work/nomara',
-    '/work/alder-and-form',
+    '/work/fieldwork-supply',
+    '/work/northbound-travel',
+    '/work/mason-and-reed',
     '/about',
     '/contact',
     '/privacy',
@@ -68,10 +68,10 @@ for (const width of [360, 375, 768, 1024, 1440, 1920]) {
       '/work',
       '/about',
       '/contact',
-      '/services/ai-assisted-commercial-films',
-      '/work/form-and-field',
-      '/work/nomara',
-      '/work/alder-and-form',
+      '/services/commercial-video-production',
+      '/work/bracken-studio',
+      '/work/northbound-travel',
+      '/work/mason-and-reed',
     ]) {
       await page.goto(path);
       await page.evaluate(() => document.fonts.ready);
@@ -84,6 +84,98 @@ for (const width of [360, 375, 768, 1024, 1440, 1920]) {
     }
   });
 }
+
+test('the approved catalogue is consistent across pages, detail routes, and inquiries', async ({
+  page,
+}) => {
+  const catalogue = [
+    ['Website Design & Development', 'website-design-development'],
+    ['E-commerce Development', 'ecommerce-development'],
+    ['Custom Software Development', 'custom-software-development'],
+    ['Support & Maintenance', 'support-maintenance'],
+    ['Logo Design', 'logo-design'],
+    ['Brand Identity Design', 'brand-identity-design'],
+    ['Brand Strategy & Positioning', 'brand-strategy-positioning'],
+    ['Product Advertising & Visuals', 'product-advertising-visuals'],
+    [
+      'Short-Form Video & Social Media Creatives',
+      'short-form-video-social-media-creatives',
+    ],
+    ['Commercial Video Production', 'commercial-video-production'],
+  ];
+  for (const path of ['/', '/services']) {
+    await page.goto(path);
+    await expect(page.locator('.service-catalogue-link')).toHaveText(
+      catalogue.map(([title]) => title),
+    );
+    await expect(page.locator('.service-catalogue-label')).toHaveText([
+      '01 / Development',
+      '02 / Branding & Design',
+      '03 / Creative Production',
+    ]);
+    await expect(page.locator('.service-catalogue-group[open]')).toHaveCount(0);
+    const groups = page.locator('.service-catalogue-group');
+    for (let index = 0; index < 3; index++) {
+      const group = groups.nth(index);
+      await group.locator('summary').press('Enter');
+      await expect(group).toHaveAttribute('open', '');
+      await expect(page.locator('.service-catalogue-group[open]')).toHaveCount(
+        1,
+      );
+      await expect(group.locator('.service-catalogue-link')).toHaveCount(
+        index === 0 ? 4 : 3,
+      );
+      await expect(
+        group.locator('.service-catalogue-link').first(),
+      ).toBeVisible();
+      await expect
+        .poll(() =>
+          group
+            .locator('img')
+            .evaluate(
+              (image: HTMLImageElement) =>
+                image.complete && image.naturalWidth > 0,
+            ),
+        )
+        .toBe(true);
+    }
+    await groups.last().locator('summary').press('Space');
+    await expect(page.locator('.service-catalogue-group[open]')).toHaveCount(0);
+  }
+  await page
+    .locator('.service-catalogue-group')
+    .first()
+    .locator('summary')
+    .click();
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.locator('.service-catalogue').screenshot({
+    path: 'test-results/services-desktop.png',
+    style: '.site-header { visibility: hidden !important; }',
+  });
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.locator('.service-catalogue').screenshot({
+    path: 'test-results/services-mobile.png',
+    style: '.site-header { visibility: hidden !important; }',
+  });
+  for (const [title, slug] of catalogue) {
+    await page.goto(`/services/${slug}`);
+    await expect(page.locator('main h1')).toHaveText(title);
+  }
+  await page.getByRole('link', { name: 'Discuss your project' }).click();
+  await expect(page.getByLabel('What can we help with?')).toHaveValue(
+    'commercial-video-production',
+  );
+  await expect(
+    page.getByLabel('What can we help with?').locator('option'),
+  ).toHaveText([
+    'Select a service',
+    ...catalogue.map(([title]) => title),
+    'Let’s figure it out',
+  ]);
+  const removed = await page.goto('/services/ai-assisted-commercial-films');
+  expect(removed?.status()).toBe(404);
+  await expect(page.locator('main h1')).toHaveText('A little off course.');
+});
 
 test('mobile menu traps focus, supports Escape, and closes after navigation', async ({
   page,
@@ -123,7 +215,7 @@ test('portfolio filtering is reflected in the URL and supports empty results', a
   await expect(page).toHaveURL(/category=Branding/);
   await page.reload();
   await expect(page.locator('.project-card')).toHaveCount(2);
-  await page.getByRole('button', { name: 'Software', exact: true }).click();
+  await page.getByRole('button', { name: 'UI/UX', exact: true }).click();
   await expect(
     page.getByRole('heading', { name: 'A space for what’s next.' }),
   ).toBeVisible();
@@ -146,6 +238,9 @@ test('contact form reports validation errors and focuses the first field', async
   page,
 }) => {
   await page.goto('/contact');
+  await expect(
+    page.locator('input[name="budget"], select[name="budget"]'),
+  ).toHaveCount(0);
   await page.getByRole('button', { name: 'Send your inquiry' }).click();
   await expect(page.getByText('Please enter your full name.')).toBeVisible();
   await expect(page.getByLabel('Full name')).toBeFocused();
@@ -179,6 +274,7 @@ test('inquiry success appears only after a successful server response', async ({
   ).toBeVisible();
   expect(body).toContain('form-name=inquiry');
   expect(body).toContain('test%40example.com');
+  expect(new URLSearchParams(body).has('budget')).toBe(false);
   await page.getByRole('button', { name: 'Send another inquiry' }).click();
   await expect(page.getByLabel('Full name')).toHaveValue('');
 });
@@ -210,7 +306,7 @@ test('original artwork loads and the homepage respects reduced motion', async ({
   await expect
     .poll(() =>
       page
-        .locator('img')
+        .locator('img:visible')
         .evaluateAll((images) =>
           images.every((image) => image.complete && image.naturalWidth > 0),
         ),
@@ -228,7 +324,7 @@ test('new concept case studies contain complete, working image galleries', async
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  for (const slug of ['nomara', 'alder-and-form']) {
+  for (const slug of ['northbound-travel', 'mason-and-reed']) {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto(`/work/${slug}`);
     await expect(page.locator('.case-gallery-item')).toHaveCount(2);
@@ -266,7 +362,7 @@ test('capture desktop and mobile designs', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/');
   await page.evaluate(() => document.fonts.ready);
-  for (const image of await page.locator('img').all()) {
+  for (const image of await page.locator('img:visible').all()) {
     await image.scrollIntoViewIfNeeded();
     await expect
       .poll(() =>
@@ -285,6 +381,20 @@ test('capture desktop and mobile designs', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.screenshot({
     path: 'test-results/home-mobile.png',
+    fullPage: true,
+  });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/contact');
+  await page.evaluate(() => document.fonts.ready);
+  await page.screenshot({
+    path: 'test-results/contact-desktop.png',
+    fullPage: true,
+  });
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/contact');
+  await page.evaluate(() => document.fonts.ready);
+  await page.screenshot({
+    path: 'test-results/contact-mobile.png',
     fullPage: true,
   });
 });

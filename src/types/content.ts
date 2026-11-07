@@ -1,5 +1,5 @@
 export type ServiceGroup =
-  'Technology & development' | 'Branding & design' | 'Creative production';
+  'Development' | 'Branding & Design' | 'Creative Production';
 
 export interface Service {
   slug: string;

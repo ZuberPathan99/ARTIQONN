@@ -12,6 +12,8 @@ Navigation and form controls have visible focus states. Mobile navigation uses R
 
 The sticky navigation has a transparent background with difference blending so its text adapts over dark and light content. Desktop navigation uses medium-weight 16px labels, with the mobile menu appearing below 960px to preserve comfortable spacing.
 
-Nomara and Alder & Form extend the case-study template with an image-led presentation: campaign cover, brief, original vector identity, named colour swatches, typography direction, and responsive application galleries. Their image palettes belong to each concept; the surrounding site retains its monochrome identity. New mockup photography was created with built-in Imagegen and exported to responsive WebP files.
+Northbound Travel and Mason & Reed extend the case-study template with a photographic cover, brief, original vector identity, colour swatches, typography direction, and responsive application galleries. Fieldwork Supply, Bracken Studio, Stockroom, and Cornerstone Coffee complete the current concept collection. Images use a natural documentary direction rather than dramatic studio sets; all application photography remains explicitly illustrative and AI-generated.
+
+The three service categories use native details/summary dropdowns. Each opens its related image and service links; keyboard operation and exclusive opening work without a JavaScript animation dependency. The contact form uses a defined panel, visible labels, and full bordered input boxes. Its five fields are name, email, optional company, service, and project description; budget is not collected.
 
 The portfolio artwork illustrates potential visual directions. Each card and study explicitly identifies its concept status, with no fictional clients or results.

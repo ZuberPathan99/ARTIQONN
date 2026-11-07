@@ -1,4 +1,4 @@
-import { ArrowUpRight, ArrowUp } from 'lucide-react';
+import { ArrowUpRight, ArrowUp, Mail, Instagram } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
 import { navigation, site } from '@/config/site';
 import { Wordmark } from './SiteHeader';
@@ -36,9 +36,19 @@ export function SiteFooter() {
           </p>
           {site.email && (
             <a href={`mailto:${site.email}`}>
-              {site.email} <ArrowUpRight size={14} />
+              <Mail size={16} strokeWidth={1.5} aria-hidden="true" />{' '}
+              {site.email}
             </a>
           )}
+          <a
+            href={`https://www.instagram.com/${encodeURIComponent(site.instagramHandle)}/`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`@${site.instagramHandle} on Instagram (opens in a new tab)`}
+          >
+            <Instagram size={16} strokeWidth={1.5} aria-hidden="true" /> @
+            {site.instagramHandle}
+          </a>
           {site.phone && (
             <a href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>
               {site.phone}

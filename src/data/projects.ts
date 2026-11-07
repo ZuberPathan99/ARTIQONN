@@ -1,234 +1,265 @@
-import type { Project } from '@/types/content';
+import type { Project, ProjectImage } from '@/types/content';
 
-// Original illustrative studies. These are not commissioned projects or client claims.
-export const projects: Project[] = [
-  {
-    slug: 'nomara',
-    title: 'Nomara',
-    category: 'Websites',
-    discipline: 'E-commerce experience · Travel & lifestyle',
-    image: '/images/projects/nomara/cover-1600.webp',
+// Independent concepts for fictional businesses; generated imagery is illustrative.
+function photograph(project: string, alt: string) {
+  const path = '/images/projects/' + project + '/cover';
+  return {
+    image: path + '-1600.webp',
     imageSrcSet:
-      '/images/projects/nomara/cover-640.webp 640w, /images/projects/nomara/cover-960.webp 960w, /images/projects/nomara/cover-1600.webp 1600w',
+      path +
+      '-640.webp 640w, ' +
+      path +
+      '-960.webp 960w, ' +
+      path +
+      '-1600.webp 1600w',
     imageWidth: 1600,
     imageHeight: 1067,
-    alt: 'Nomara concept: an olive carry-on and a laptop presenting a warm, editorial travel-shopping experience',
+    alt,
+  };
+}
+
+function application(
+  project: string,
+  asset: string,
+  label: string,
+  caption: string,
+  alt: string,
+): ProjectImage {
+  const path = '/images/projects/' + project + '/' + asset;
+  return {
+    src: path + '-1600.webp',
+    srcSet:
+      path +
+      '-640.webp 640w, ' +
+      path +
+      '-960.webp 960w, ' +
+      path +
+      '-1600.webp 1600w',
+    width: 1600,
+    height: 1067,
+    alt,
+    label,
+    caption,
+    layout: 'wide',
+  };
+}
+
+export const projects: Project[] = [
+  {
+    slug: 'northbound-travel',
+    title: 'Northbound Travel',
+    category: 'Websites',
+    discipline: 'Travel retail · E-commerce concept',
+    ...photograph(
+      'northbound-travel',
+      'Northbound Travel concept storefront on a laptop beside a practical navy carry-on in a working studio',
+    ),
     description:
-      'A considered digital world for a fictional luggage label. A little less ordinary. A little more out there.',
+      'A straightforward online-store concept for a fictional luggage business. Clear product choices, practical details, and a visual identity that travels well.',
     challenge:
-      'Explore how a luggage store can feel like an invitation to travel while keeping product discovery clear. The concept brings campaign photography, collection browsing, and practical product information into one visual language.',
+      'Make a varied luggage catalogue easy to browse without burying the practical details people need to compare products.',
     approach:
-      'An original direction built around an angular N monogram, warm terracotta, deep olive, and generous editorial typography. Desktop and mobile interface studies put the product first, while tactile travel accessories carry the same identity into the physical world.',
+      'A simple black wordmark, navy product photography, and a clear shopping hierarchy create a consistent desktop and mobile direction. The study explores product discovery and presentation rather than a live store.',
     deliverables: [
-      'Original wordmark and monogram',
-      'Art direction and colour system',
-      'Desktop e-commerce interface study',
-      'Mobile product experience concept',
-      'AI-generated campaign and application mockups',
+      'Wordmark and visual direction',
+      'Storefront and product-page concepts',
+      'Responsive shopping interface studies',
+      'Illustrative product and application photography',
     ],
     relatedServices: [
       'website-design-development',
       'ecommerce-development',
-      'ui-ux-design',
       'brand-identity-design',
     ],
     identity: {
-      sector: 'Travel & lifestyle',
-      headline: 'Made for the next departure.',
-      logo: '/images/projects/nomara/logo.svg',
-      logoAlt: 'Original Nomara wordmark with an angular N monogram',
+      sector: 'Travel retail',
+      headline: 'Clear choices. A consistent identity.',
+      logo: '/images/projects/northbound-travel/logo.svg',
+      logoAlt: 'Northbound Travel concept wordmark',
       logoDescription:
-        'An angular N suggests a route in motion. Open spacing gives the wordmark a confident, unhurried presence, from a small luggage tag to a digital storefront.',
+        'A compact, plain-speaking wordmark that stays readable on a screen, a woven label, or a paper hangtag.',
       typography:
-        'A precise sans-serif wordmark, generous display type, and a restrained hierarchy for everyday product details.',
+        'A direct sans-serif hierarchy makes the product name, useful details, and next action easy to find.',
       palette: [
-        { name: 'Terracotta', hex: '#B75C42' },
-        { name: 'Deep olive', hex: '#353D32' },
-        { name: 'Parchment', hex: '#EEE8DD' },
-        { name: 'Warm ink', hex: '#24251F' },
+        { name: 'Navy', hex: '#202B3C' },
+        { name: 'Ink', hex: '#202020' },
+        { name: 'Paper', hex: '#F2F1ED' },
+        { name: 'Grey', hex: '#A9AAA6' },
       ],
     },
     gallery: [
-      {
-        src: '/images/projects/nomara/campaign-1600.webp',
-        srcSet:
-          '/images/projects/nomara/campaign-640.webp 640w, /images/projects/nomara/campaign-960.webp 960w, /images/projects/nomara/campaign-1600.webp 1600w',
-        width: 1600,
-        height: 1067,
-        alt: 'Original Nomara travel campaign concept with olive luggage, warm materials, and an editorial studio setting',
-        label: '01 / Art direction',
-        caption:
-          'The feeling of going somewhere. A product-led campaign direction built around texture, warmth, and the anticipation of travel.',
-        layout: 'wide',
-      },
-      {
-        src: '/images/projects/nomara/mobile-1600.webp',
-        srcSet:
-          '/images/projects/nomara/mobile-640.webp 640w, /images/projects/nomara/mobile-960.webp 960w, /images/projects/nomara/mobile-1600.webp 1600w',
-        width: 1600,
-        height: 1067,
-        alt: 'Nomara mobile shopping interface concepts with coordinated travel tags and branded packaging',
-        label: '02 / A connected experience',
-        caption:
-          'One visual language, wherever the journey begins. Mobile shopping concepts and physical brand details designed to feel connected.',
-        layout: 'wide',
-      },
+      application(
+        'northbound-travel',
+        'product',
+        '01 / Product presentation',
+        'Practical product details and a consistent photographic direction give the store a clear visual foundation.',
+        'A Northbound Travel navy carry-on concept beside printed product drawings and fabric samples',
+      ),
+      application(
+        'northbound-travel',
+        'mobile',
+        '02 / The mobile experience',
+        'The same hierarchy adapted to a smaller screen, with room for the product and the information that helps people choose.',
+        'Northbound Travel responsive store and product-page concepts shown on two smartphones with printed wireframes',
+      ),
     ],
   },
   {
-    slug: 'alder-and-form',
-    title: 'Alder & Form',
+    slug: 'mason-and-reed',
+    title: 'Mason & Reed',
     category: 'Branding',
-    discipline: 'Brand identity · Furniture & living',
-    image: '/images/projects/alder-and-form/cover-1600.webp',
-    imageSrcSet:
-      '/images/projects/alder-and-form/cover-640.webp 640w, /images/projects/alder-and-form/cover-960.webp 960w, /images/projects/alder-and-form/cover-1600.webp 1600w',
-    imageWidth: 1600,
-    imageHeight: 1067,
-    alt: 'Alder and Form concept identity applied to tactile stationery, an embossed catalogue, and warm wood samples',
+    discipline: 'Furniture business · Brand identity concept',
+    ...photograph(
+      'mason-and-reed',
+      'Mason and Reed furniture identity concept on a printed catalogue, business cards, and product specification sheet',
+    ),
     description:
-      'An original identity for a fictional furniture studio. Architectural in structure. Warm in character. Considered in every application.',
+      'A practical identity concept for a fictional furniture business. A clear wordmark, a restrained palette, and printed materials that belong together.',
     challenge:
-      'Create a furniture identity that communicates craft without relying on a literal chair or tree symbol. The study explores a flexible system that feels equally at home on a catalogue, a workshop label, and a showroom wall.',
+      'Create a recognisable identity that works across everyday business materials and product information without competing with the furniture.',
     approach:
-      'An interlocking A/F monogram draws on the logic of joinery and architectural form. Ecru paper, espresso ink, and an ochre accent bring warmth to a disciplined typographic system, extended through original stationery, space, and craft imagery.',
+      'A simple MR monogram and carefully spaced wordmark form the foundation. Muted sage, ordinary uncoated paper, and a consistent catalogue layout extend the identity into useful applications.',
     deliverables: [
-      'Original architectural A/F monogram',
-      'Wordmark and visual identity system',
+      'Wordmark and MR monogram',
       'Colour and typography direction',
-      'Stationery and catalogue applications',
-      'AI-generated showroom and craft mockups',
+      'Catalogue and stationery concepts',
+      'Showroom and material application studies',
     ],
     relatedServices: [
+      'logo-design',
       'brand-identity-design',
-      'visual-design',
-      'digital-brand-assets',
+      'brand-strategy-positioning',
     ],
     identity: {
-      sector: 'Furniture & living',
-      headline: 'A quieter kind of distinction.',
-      logo: '/images/projects/alder-and-form/logo.svg',
-      logoAlt:
-        'Original Alder and Form wordmark with an interlocking architectural A and F monogram',
+      sector: 'Furniture & interiors',
+      headline: 'An identity for everyday use.',
+      logo: '/images/projects/mason-and-reed/logo.svg',
+      logoAlt: 'Mason and Reed concept wordmark with an MR monogram',
       logoDescription:
-        'Two architectural letterforms meet like a carefully made joint. The monogram balances a strong silhouette with open space, designed to work in print, embossing, and signage.',
+        'An uncomplicated monogram keeps the identity compact while the spaced wordmark gives larger applications a calm, legible signature.',
       typography:
-        'Open, architectural capitals with deliberate spacing. A calm typographic hierarchy lets the material and the object carry the story.',
+        'A practical sans-serif system connects the catalogue, specifications, stationery, and showroom signage.',
       palette: [
-        { name: 'Ecru', hex: '#EEE7D9' },
-        { name: 'Espresso', hex: '#32271F' },
-        { name: 'Ochre', hex: '#B78952' },
-        { name: 'Stone', hex: '#B9B1A1' },
+        { name: 'Sage', hex: '#929B7D' },
+        { name: 'Charcoal', hex: '#262626' },
+        { name: 'Paper', hex: '#EEEEE7' },
+        { name: 'Stone', hex: '#B3B5AE' },
       ],
     },
     gallery: [
-      {
-        src: '/images/projects/alder-and-form/interior-1600.webp',
-        srcSet:
-          '/images/projects/alder-and-form/interior-640.webp 640w, /images/projects/alder-and-form/interior-960.webp 960w, /images/projects/alder-and-form/interior-1600.webp 1600w',
-        width: 1600,
-        height: 1067,
-        alt: 'Alder and Form concept showroom with sculptural walnut furniture, warm daylight, and architectural brand signage',
-        label: '01 / Identity in space',
-        caption:
-          'More than a mark on a page. An imagined showroom brings the identity into a world of natural materials, light, and considered objects.',
-        layout: 'wide',
-      },
-      {
-        src: '/images/projects/alder-and-form/craft-1600.webp',
-        srcSet:
-          '/images/projects/alder-and-form/craft-640.webp 640w, /images/projects/alder-and-form/craft-960.webp 960w, /images/projects/alder-and-form/craft-1600.webp 1600w',
-        width: 1600,
-        height: 1067,
-        alt: 'Alder and Form craft concept with a maker’s apron, walnut joinery, and tactile branded material details',
-        label: '02 / The details that carry it',
-        caption:
-          'A tactile expression of the same idea. Workshop materials and small brand applications give the visual system an everyday, human scale.',
-        layout: 'wide',
-      },
+      application(
+        'mason-and-reed',
+        'showroom',
+        '01 / A physical setting',
+        'An imagined showroom application explores how the identity sits alongside the furniture without overwhelming the space.',
+        'Mason and Reed concept signage in a modest furniture showroom with practical oak chairs',
+      ),
+      application(
+        'mason-and-reed',
+        'details',
+        '02 / Printed details',
+        'Catalogue information, material samples, and small brand applications follow the same restrained system.',
+        'Mason and Reed catalogue details, care cards, wood samples, and a woven brand label',
+      ),
     ],
   },
   {
-    slug: 'still-objects',
-    title: 'Still Objects',
+    slug: 'fieldwork-supply',
+    title: 'Fieldwork Supply',
     category: 'Websites',
-    discipline: 'Digital experience · E-commerce concept',
-    image: '/images/still-objects.svg',
-    alt: 'Original Still Objects website concept featuring sculptural objects and an editorial product layout',
+    discipline: 'Homewares retail · Website concept',
+    ...photograph(
+      'fieldwork-supply',
+      'Fieldwork Supply homewares-store concept on a laptop with a printed page wireframe',
+    ),
     description:
-      'An independent design study exploring a quieter, more editorial way to discover everyday objects.',
+      'A product-led store concept for a fictional homewares retailer, built around useful objects and straightforward browsing.',
     challenge:
-      'Explore how a product-led website can balance expressive visual storytelling with clear product discovery.',
+      'Give a small everyday-product catalogue a clear structure and a consistent visual presentation.',
     approach:
-      'A restrained grid, generous product space, and deliberate typography create an imagined shopping experience. The artwork is an original interface concept; no commerce implementation or client engagement is implied.',
+      'A simple page hierarchy, quiet product imagery, and clear categories keep attention on the objects. Printed wireframes and the screen presentation illustrate the intended direction; no operating store is implied.',
     deliverables: [
-      'Website art direction study',
-      'Product presentation concept',
-      'Responsive layout direction',
+      'Content and storefront structure',
+      'Homepage design direction',
+      'Product-grid interface study',
     ],
     relatedServices: ['website-design-development', 'ecommerce-development'],
   },
   {
-    slug: 'form-and-field',
-    title: 'Form & Field',
+    slug: 'bracken-studio',
+    title: 'Bracken Studio',
     category: 'Branding',
-    discipline: 'Visual identity · Brand exploration',
-    image: '/images/form-field.svg',
-    alt: 'Original Form and Field brand study with a geometric symbol on contrasting monochrome stationery',
+    discipline: 'Architecture practice · Identity concept',
+    ...photograph(
+      'bracken-studio',
+      'Bracken Studio architecture identity concept on stationery, presentation folders, and a folded floor plan',
+    ),
     description:
-      'A visual identity exploration at the intersection of architectural structure and organic form.',
+      'A clear, restrained identity concept for a fictional architecture practice, expressed through practical printed materials.',
     challenge:
-      'Develop a flexible identity concept that feels deliberate and expressive using a strictly monochrome palette.',
+      'Create a visual identity that supports technical information and professional communication across different formats.',
     approach:
-      'A modular symbol and a typographic system extend across imagined stationery and digital touchpoints. This is original illustrative artwork created for the ARTIQONN website, rather than a completed client identity.',
+      'A compact typographic mark, black ink, and a fine green accent connect the folder, business card, and drawings. The work is an illustrative identity exploration.',
     deliverables: [
-      'Concept symbol exploration',
-      'Typography direction',
-      'Illustrative stationery applications',
-    ],
-    relatedServices: ['brand-identity-design', 'visual-design'],
-  },
-  {
-    slug: 'clarity-workspace',
-    title: 'Clarity',
-    category: 'UI/UX',
-    discipline: 'Product design · Interface study',
-    image: '/images/clarity.svg',
-    alt: 'Clarity interface study showing a minimal project workspace with task columns',
-    description:
-      'An interface study about making the working day feel a little more organised.',
-    challenge:
-      'Explore a legible workspace where tasks and project context can live together without competing for attention.',
-    approach:
-      'A compact navigation system and clear information hierarchy frame an imagined task workspace. This visual study is not an operating product or a validated usability case study.',
-    deliverables: [
-      'Information hierarchy concept',
-      'Desktop interface study',
-      'Interaction direction',
-    ],
-    relatedServices: ['ui-ux-design', 'web-application-development'],
-  },
-  {
-    slug: 'light-and-matter',
-    title: 'Light / Matter',
-    category: 'Creative production',
-    discipline: 'Art direction · Visual experiment',
-    image: '/images/light-matter.svg',
-    alt: 'Light and Matter visual experiment with luminous geometric rings against a black background',
-    description:
-      'An original composition exploring how geometry and contrast can give a simple object presence.',
-    challenge:
-      'Create an expressive visual using only form, rhythm, and a limited tonal range.',
-    approach:
-      'Repeated circular forms create a sense of dimension. The composition explores a possible visual language for future campaigns, without depicting a real product or a commissioned advertisement.',
-    deliverables: [
-      'Original graphic composition',
-      'Monochrome art direction',
-      'Campaign layout exploration',
+      'Wordmark and symbol direction',
+      'Stationery and folder concepts',
+      'Typography and application guidelines',
     ],
     relatedServices: [
-      'product-advertising-creatives',
-      'creative-visual-campaigns',
+      'logo-design',
+      'brand-identity-design',
+      'brand-strategy-positioning',
+    ],
+  },
+  {
+    slug: 'stockroom',
+    title: 'Stockroom',
+    category: 'Software',
+    discipline: 'Order management · Product interface concept',
+    ...photograph(
+      'stockroom',
+      'Stockroom order-management interface concept displayed on a desktop workstation',
+    ),
+    description:
+      'An interface concept for a fictional order-management tool, focused on making day-to-day operational tasks easier to follow.',
+    challenge:
+      'Bring orders, inventory, and fulfilment status into a clear working interface without crowding the screen.',
+    approach:
+      'A stable navigation structure, legible table, and restrained status labels form the product direction. This is an interface study, not a shipped or validated software product.',
+    deliverables: [
+      'Task and information hierarchy',
+      'Orders workspace interface',
+      'Navigation and component direction',
+    ],
+    relatedServices: [
+      'custom-software-development',
+      'website-design-development',
+    ],
+  },
+  {
+    slug: 'cornerstone-coffee',
+    title: 'Cornerstone Coffee',
+    category: 'Creative production',
+    discipline: 'Coffee retail · Packaging and advertising concept',
+    ...photograph(
+      'cornerstone-coffee',
+      'Cornerstone Coffee packaging concept with kraft pouches, simple printed labels, and a takeaway cup',
+    ),
+    description:
+      'A product-visual and packaging concept for a fictional neighbourhood coffee business, using a direct, everyday photographic approach.',
+    challenge:
+      'Build a recognisable visual direction that carries from a small package label to product advertising.',
+    approach:
+      'A straightforward wordmark and simple kraft-paper packaging establish the direction. The illustrative photograph explores how those details could work together in a practical commercial setting.',
+    deliverables: [
+      'Packaging visual direction',
+      'Product advertising composition',
+      'Brand application study',
+    ],
+    relatedServices: [
+      'product-advertising-visuals',
+      'brand-identity-design',
+      'short-form-video-social-media-creatives',
     ],
   },
 ];

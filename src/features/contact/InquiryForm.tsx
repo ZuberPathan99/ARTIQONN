@@ -32,7 +32,6 @@ const schema = z.object({
       'Tell us a little more about your project (at least 20 characters).',
     )
     .max(5000, 'Please keep your message under 5,000 characters.'),
-  budget: z.enum(['', 'under-1l', '1l-3l', '3l-10l', '10l-plus', 'discuss']),
 });
 type Errors = Partial<Record<keyof z.infer<typeof schema>, string>>;
 
@@ -173,7 +172,13 @@ export function InquiryForm() {
       noValidate
       onSubmit={handleSubmit}
       className="inquiry-form"
+      aria-labelledby="inquiry-heading"
     >
+      <header className="form-heading">
+        <p className="eyebrow">Project inquiry</p>
+        <h2 id="inquiry-heading">Tell us what you’re planning.</h2>
+        <p>Share a few details below. We’ll take it from there.</p>
+      </header>
       <input type="hidden" name="form-name" value="inquiry" />
       <div className="honeypot" aria-hidden="true">
         <label>
@@ -254,26 +259,6 @@ export function InquiryForm() {
           </select>
           {errorMessage('service')}
         </div>
-      </div>
-      <div className="form-field">
-        <label htmlFor="budget">
-          Estimated budget <span className="optional">(optional)</span>
-        </label>
-        <select
-          id="budget"
-          name="budget"
-          defaultValue=""
-          className="form-input"
-          {...errorProps('budget')}
-        >
-          <option value="">Choose a range (INR)</option>
-          <option value="under-1l">Under ₹1 lakh</option>
-          <option value="1l-3l">₹1–3 lakh</option>
-          <option value="3l-10l">₹3–10 lakh</option>
-          <option value="10l-plus">₹10 lakh and above</option>
-          <option value="discuss">Let’s discuss</option>
-        </select>
-        {errorMessage('budget')}
       </div>
       <div className="form-field">
         <label htmlFor="message">

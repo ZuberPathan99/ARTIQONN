@@ -20,9 +20,9 @@ export default function Privacy() {
         <h2>Information you choose to share</h2>
         <p>
           The inquiry form asks for your name, email address, service interest,
-          and project description. Company name and budget are optional. Please
-          avoid including passwords, payment information, or other sensitive
-          personal information.
+          and project description. Company name is optional. Please avoid
+          including passwords, payment information, or other sensitive personal
+          information.
         </p>
         <h2>How inquiries are used</h2>
         <p>

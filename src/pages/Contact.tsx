@@ -13,7 +13,7 @@ export const meta = () =>
 
 export default function Contact() {
   return (
-    <>
+    <div className="contact-page">
       <PageIntro
         label="Let’s talk"
         title={
@@ -64,6 +64,6 @@ export default function Contact() {
         </aside>
         <InquiryForm />
       </section>
-    </>
+    </div>
   );
 }

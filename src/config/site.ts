@@ -6,7 +6,10 @@ export const site = {
   descriptor: 'Technology & Design Company',
   tagline: 'Technology Meets Creativity.',
   origin: configuredOrigin,
-  email: import.meta.env.VITE_CONTACT_EMAIL || '',
+  email: import.meta.env.VITE_CONTACT_EMAIL || 'hello@artiqonn.com',
+  instagramHandle: (
+    import.meta.env.VITE_INSTAGRAM_HANDLE || 'artiqonn'
+  ).replace(/^@/, ''),
   phone: import.meta.env.VITE_CONTACT_PHONE || '',
   contactEnabled: import.meta.env.VITE_CONTACT_ENABLED === 'true',
 };

@@ -84,7 +84,7 @@ export default function Work() {
             <span aria-hidden="true">↗</span>
             <h2>A space for what’s next.</h2>
             <p>
-              There are no published software projects here yet. Explore another
+              No studies are published in this category yet. Explore another
               discipline, or tell us what you’re planning.
             </p>
             <button
